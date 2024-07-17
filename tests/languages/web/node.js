@@ -8,69 +8,150 @@ async function start() {
     const foo = new Foo(client);
     const bar = new Bar(client);
     const general = new General(client);
+    
     // Foo
-    response = await foo.get('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling foo.get()');
+        response = await foo.get({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('foo.get() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in foo.get():', error);
+    }
 
-    response = await foo.post('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling foo.post()');
+        response = await foo.post({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('foo.post() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in foo.post():', error);
+    }
 
-    response = await foo.put('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling foo.put()');
+        response = await foo.put({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('foo.put() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in foo.put():', error);
+    }
 
-    response = await foo.patch('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling foo.patch()');
+        response = await foo.patch({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('foo.patch() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in foo.patch():', error);
+    }
 
-    response = await foo.delete('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling foo.delete()');
+        response = await foo.delete({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('foo.delete() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in foo.delete():', error);
+    }
 
     // Bar
-    response = await bar.get('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling bar.get()');
+        response = await bar.get({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('bar.get() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in bar.get():', error);
+    }
 
-    response = await bar.post('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling bar.post()');
+        response = await bar.post({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('bar.post() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in bar.post():', error);
+    }
 
-    response = await bar.put('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling bar.put()');
+        response = await bar.put({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('bar.put() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in bar.put():', error);
+    }
 
-    response = await bar.patch('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling bar.patch()');
+        response = await bar.patch({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('bar.patch() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in bar.patch():', error);
+    }
 
-    response = await bar.delete('string', 123, ['string in array']);
-    console.log(response.result);
+    try {
+        console.log('Calling bar.delete()');
+        response = await bar.delete({ x: 'string', y: 123, z: ['string in array'] });
+        console.log('bar.delete() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in bar.delete():', error);
+    }
 
     // General
-    response = await general.redirect();
-    console.log(response.result);
+    try {
+        console.log('Calling general.redirect()');
+        response = await general.redirect();
+        console.log('general.redirect() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in general.redirect():', error);
+    }
   
     console.log('POST:/v1/mock/tests/general/upload:passed'); // Skip file upload test on Node.js
     console.log('POST:/v1/mock/tests/general/upload:passed'); // Skip big file upload test on Node.js
     console.log('POST:/v1/mock/tests/general/upload:passed'); // Skip file upload test on Node.js
     console.log('POST:/v1/mock/tests/general/upload:passed'); // Skip big file upload test on Node.js
 
-    response = await general.enum(MockType.First);
-    console.log(response.result);
+    try {
+        console.log('Calling general.enum()');
+        response = await general.enum({ mockType: MockType.First });
+        console.log('general.enum() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in general.enum():', error);
+    }
 
     try {
+        console.log('Calling general.empty()');
         response = await general.empty();
+        console.log('general.empty() response:', response);
     } catch (error) {
-        console.log(error);
+        console.error('Error in general.empty():', error);
     }
+
     try {
+        console.log('Calling general.error400()');
         response = await general.error400();
-    } catch(error) {
-        console.log(error.message);
+    } catch (error) {
+        console.error('Error in general.error400():', error.message);
     }
+
     try {
+        console.log('Calling general.error500()');
         response = await general.error500();
-    } catch(error) {
-        console.log(error.message);
+    } catch (error) {
+        console.error('Error in general.error500():', error.message);
     }
+
     try {
+        console.log('Calling general.error502()');
         response = await general.error502();
     } catch (error) {
-        console.log(error.message);
+        console.error('Error in general.error502():', error.message);
     }
 
     console.log('WS:/v1/realtime:passed'); // Skip realtime test on Node.js
@@ -119,13 +200,18 @@ async function start() {
     console.log(Permission.update(Role.user(ID.custom('userid'), 'unverified')));
     console.log(Permission.create(Role.label('admin')));
 
-
     // ID helper tests
     console.log(ID.unique());
     console.log(ID.custom('custom_id'));
 
-    response = await general.headers();
-    console.log(response.result);
+    try {
+        console.log('Calling general.headers()');
+        response = await general.headers();
+        console.log('general.headers() response:', response);
+        console.log(response.result);
+    } catch (error) {
+        console.error('Error in general.headers():', error);
+    }
 }
 
 start();
